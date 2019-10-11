@@ -44,3 +44,59 @@ function moveZeros(arr) {
   return [...arr.filter(a => a !== 0), ...arr.filter(a => a === 0)]
   
 }
+
+/* Get Nth Even Number */
+
+function nthEven(n) {
+  return 2 * n - 2
+}
+
+/* Isograms */
+
+function isIsogram(str){
+
+  let counter = []
+  for (let index = 0; index < str.length; index ++) {
+    let compare = str[index].toLowerCase()
+    if (counter.includes(compare)) {
+      return false
+    } else {
+      counter.push(compare)
+    }
+  }
+  return true
+  
+}
+
+/* A Needle in the Haystack */
+
+function findNeedle(haystack) {
+  return `found the needle at position ${haystack.indexOf("needle")}`
+}
+
+/* rot13 */
+
+function rot13(message) {
+  let str = ""
+  let parallel = message.split("").map(char => char.toLowerCase())
+
+  for (let i = 0; i < message.length; i++) {
+    let temp = ""
+    let letter = parallel[i]
+    if (letter.match(/[a-z]/)) {
+      if (alphabet[alphabet.indexOf(letter) + 13]) {
+        temp = alphabet[alphabet.indexOf(letter) + 13]
+      } else {
+        temp = alphabet[alphabet.indexOf(letter) + 13 - 26]
+      }
+      if (message[i] === message[i].toLowerCase()) {
+        str += temp
+      } else {
+        str += temp.toUpperCase()
+      }
+    } else {
+      str += letter
+    }
+  }
+  return str
+}
